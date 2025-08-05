@@ -6,28 +6,19 @@ import { useApi } from "../../hooks/useApi";
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [user, setUser] = useState<User | null>(null);
     const api = useApi();
- 
-
 
     useEffect(() => {
-        // updateUser();
+        validateTokenExp();
     }, [])
 
-    const updateUser = async () => {
+    const validateTokenExp = async () => {
         const token = getToken();
         if (token) {
-            const token = {
-                email: 'test@example.com',
-                name: 'Test'
-            }
-            if (token) {
-                const userData = {
-                    email: token.email,
-                    name: token.name,
-                    validatedEmail: true,
-                    validatedCode: true
-                };
-                setUser(userData);
+            const data = await validateToken(token);
+            if(!data.isValidToken) {
+                setToken("");
+                setUser(null);
+                console.log(data.message);
             }
         }
     }
@@ -38,10 +29,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
     const signinCode = async (code: string) => {
         const data = await api.post('/auth/code', { code })
-        console.log(user, data);
         let isValidated = false;
-        if(data.jwt) {
-            setToken(data.jwt);
+        if(data.access_token) {
+            setToken(data.access_token);
             isValidated = true;
         }
         return isValidated;
@@ -51,16 +41,20 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         setUser(null);
     }
 
-    const setToken = (token: string) => {
-        localStorage.setItem('token', token);
+    const setToken = (access_token: any) => {
+        localStorage.setItem('access_token', access_token);
     }
 
     const getToken = () => {
-        return localStorage.getItem('token');
+        return localStorage.getItem('access_token');
+    }
+
+    const validateToken = async (token: string) => {
+        return await api.post('/auth/validate', { token })
     }
 
     return (
-        <AuthContext.Provider value={{ user, signinMail, signinCode, signout }}>
+        <AuthContext.Provider value={{ user, signinMail, signinCode, signout, getToken }}>
             {children}
         </AuthContext.Provider>
     );

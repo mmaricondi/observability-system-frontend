@@ -19,5 +19,9 @@ export const useApi = () => {
         return response.data;
     };
 
-    return { get, post };
+    const setHeader = (key: string, value: string) => {
+        api.defaults.headers.common[key] = value;
+    };
+
+    return { get, post, setHeader };
 };

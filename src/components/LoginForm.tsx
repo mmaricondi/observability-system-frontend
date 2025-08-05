@@ -1,7 +1,6 @@
 import Button from './Button';
 import InputField from './InputField'
 import { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/Auth/AuthContext';
 import OtpValidation from './OtpValidation';
 

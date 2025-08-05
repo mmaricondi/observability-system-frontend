@@ -27,7 +27,7 @@ function OtpValidation() {
         }
     }
 
-  return (
+    return (
         <>
             <h1>
                 Entre com o codigo enviado para o seu e-mail:
@@ -67,7 +67,7 @@ function OtpValidation() {
                 </Button>
             </div>
         </>
-  );
+    );
 }
 
 export default OtpValidation;
