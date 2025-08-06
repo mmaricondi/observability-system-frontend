@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import Button from './Button';
+import Button from '../components/Button';
 import OTPInput from 'react-otp-input';
 import { AuthContext } from '../contexts/Auth/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -29,40 +29,29 @@ function OtpValidation() {
 
     return (
         <>
-            <h1>
-                Entre com o codigo enviado para o seu e-mail:
-            </h1>
-
-            <div className='otp-input-container'>
+            <h1 className='font-bold text-gray-700'>Entre com o codigo enviado para o seu e-mail:</h1>
+            <div className='otp-input-container ml-3'>
                 <OTPInput
                     value={otp.join('')}
                     onChange={(value)=> setOtp(value.split(''))}
-                    onPaste={(e) => {
-                        const pastedValue = e.clipboardData.getData('Text');
-                        if (/^\d{6}$/.test(pastedValue)) {
-                            setOtp(pastedValue.split(''));
-                        }
-                        e.preventDefault();
-                    }}
                     numInputs={6}
                     inputStyle={{
                         width: '3rem',
                         height: '3rem',
-                        margin: '1rem 0.2rem',
+                        margin: '1rem 0.3rem',
                         fontSize: '1.5rem',
                         borderRadius : '4px',
                         border: '1px solid #ced4da'
                     }}
                     renderInput={(inputProps, index) => <input {...inputProps} key={index}/>}
-
                 />
             </div>
             <div>
                 <Button onClick={handleOTPVerification} className='otp-login'>
                     {loading ? (
-                        'Loading ...'
+                        'Carregando ...'
                     ): (
-                        'Verify Code'
+                        'Confirmar Código'
                     )}
                 </Button>
             </div>
