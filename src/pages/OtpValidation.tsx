@@ -22,6 +22,7 @@ function OtpValidation() {
             setError("")
             setDisabled(true)
         }
+        setError('')
     }, [otp])
 
     const handleOTPVerification = async (event: React.FormEvent) => {
@@ -29,16 +30,12 @@ function OtpValidation() {
         const enteredOTP = otp.join('');
         if (/^[A-Za-z0-9]{6}$/.test(enteredOTP)) {
             setLoading(true);
-            const isValidated = await data.signinCode(enteredOTP)
+            const isValidated = await data.signinCode(data.user?.email, enteredOTP)
             if(isValidated) {
-                setTimeout(async () => {
-                    navigate('/dashboard');
-                }, 2000)
+                navigate('/dashboard');
             }else {
-                setTimeout(async () => {
-                    setError("Codigo invalido")
-                    setLoading(false)
-                }, 1000)
+                setError("Codigo invalido")
+                setLoading(false)
             }
         }else{
             setError("Validacao invalida use apenas [Letra e numeros]")

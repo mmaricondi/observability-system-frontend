@@ -3,8 +3,8 @@ import type { User } from '../../types/User';
 
 export type AuthContextType = {
     user: User | null;
-    signinMail: (email: string) => Promise<void>;
-    signinCode: (code: string) => Promise<boolean>;
+    signinMail: (email: string) => Promise<boolean>;
+    signinCode: (email: string | undefined, code: string) => Promise<boolean>;
     signout: () => void;
     getToken: () => string | null;
 }

@@ -1,7 +1,7 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import Button from '../components/Button';
 import InputField from '../components/login/InputField'
-import { EmailIcon, LogoIcon } from "../assets/icons";
+import { EmailIcon, LogoIcon, SpinIcon } from "../assets/icons";
 import { AuthContext } from '../contexts/Auth/AuthContext';
 import OtpValidation from './OtpValidation';
 
@@ -9,16 +9,29 @@ function Login() {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [disabled, setDisabled] = useState(true);
   const data = useContext(AuthContext);
+
+  useEffect(() => {
+    if(email) {
+      setDisabled(false)
+    }else {
+      setDisabled(true)
+    }
+    setError('')
+  }, [email])
 
   const handleEmailVerification = async (event: React.FormEvent) => {
     event.preventDefault();
 
     if (validateEmail(email)) {
         setLoading(true);
-        await data.signinMail(email);
-        setLoading(false);
-        setError('');
+        const sentEmail = await data.signinMail(email);
+
+        if(!sentEmail) {
+            setLoading(false);
+            setError('Falha ao enviar email')
+        }
     }
     else{
         setError("Invalid Email");
@@ -47,12 +60,13 @@ function Login() {
                   iconStart={<EmailIcon className="w-5 h-5 text-gray-500" />}
               />
               <div>
-                    <Button onClick={handleEmailVerification} className='otp-verify-email'>
-                      {loading ? (
-                          'Loading ...'
-                      ): (
-                          'Entrar'
-                      )}
+                    <Button onClick={handleEmailVerification} className='otp-verify-email' disabled={disabled}>
+                      <div className='flex flex-row justify-center'>
+                          <div className='mr-2'>
+                              {loading && <SpinIcon />}
+                          </div>
+                          {loading ? 'Enviando...' : 'Enviar'}
+                      </div>
                   </Button>
               </div>
           </>) : (

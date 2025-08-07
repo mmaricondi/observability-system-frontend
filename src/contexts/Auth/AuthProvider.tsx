@@ -24,11 +24,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
 
     const signinMail = async (email: string) => {
-        const data = await api.post('/auth/login', { email })
-        setUser({...data, validatedEmail: true });
+        const isSentEmail = await api.post('/auth/login', { email })
+        if(isSentEmail) {
+            setUser({...isSentEmail, validatedEmail: true });
+        }
+        return isSentEmail
     }
-    const signinCode = async (code: string) => {
-        const data = await api.post('/auth/code', { code })
+    const signinCode = async (email: string | undefined, code: string) => {
+        const data = await api.post('/auth/code', { email, code })
         let isValidated = false;
         if(data.access_token) {
             setToken(data.access_token);
@@ -39,7 +42,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const signout = async () => {
         setToken('')
         setUser(null);
-        await api.get('/signin')
     }
 
     const setToken = (access_token: any) => {

@@ -16,7 +16,7 @@ function InputField({ label, type = 'text', value, onChange, error, placeholder,
           }`}
         />
       </div>
-      {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+      {error && <p className="text-red-500 text-sm mt-1 fixed">{error}</p>}
     </div>
   )
 }

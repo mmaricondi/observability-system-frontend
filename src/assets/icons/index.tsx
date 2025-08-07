@@ -104,21 +104,21 @@ export function InternalIcon() {
   return (
     <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0 10.5C0 4.70101 4.70101 0 10.5 0H45.5C51.299 0 56 4.70101 56 10.5V45.5C56 51.299 51.299 56 45.5 56H10.5C4.70101 56 0 51.299 0 45.5V10.5Z" fill="#F1F1F1"/>
-      <path d="M22.6641 40.005V17.3289C22.6641 16.5922 23.2613 15.995 23.998 15.995H32.0013C32.738 15.995 33.3352 16.5922 33.3352 17.3289V40.005" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M40.0054 40.005V22.5484C40.0054 21.8758 39.4601 21.3306 38.7875 21.3306H33.3359" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M22.6646 21.3306H17.213C16.5404 21.3306 15.9951 21.8758 15.9951 22.5484V40.005" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M33.3359 25.3321H36.6707" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M33.3359 29.3339H36.6707" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M33.3359 33.3355H36.6707" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M19.3291 25.3321H22.6638" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M19.3291 29.3339H22.6638" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M19.3291 33.3355H22.6638" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M25.999 29.3339H30.0007" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M25.999 33.3355H30.0007" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M25.999 25.3321H30.0007" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M25.999 21.3305H30.0007" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M28 37.3373V40.0051" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M41.3389 40.005H14.6611" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M22.6641 40.005V17.3289C22.6641 16.5922 23.2613 15.995 23.998 15.995H32.0013C32.738 15.995 33.3352 16.5922 33.3352 17.3289V40.005" stroke="#333333" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M40.0054 40.005V22.5484C40.0054 21.8758 39.4601 21.3306 38.7875 21.3306H33.3359" stroke="#333333" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M22.6646 21.3306H17.213C16.5404 21.3306 15.9951 21.8758 15.9951 22.5484V40.005" stroke="#333333" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M33.3359 25.3321H36.6707" stroke="#333333" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M33.3359 29.3339H36.6707" stroke="#333333" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M33.3359 33.3355H36.6707" stroke="#333333" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M19.3291 25.3321H22.6638" stroke="#333333" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M19.3291 29.3339H22.6638" stroke="#333333" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M19.3291 33.3355H22.6638" stroke="#333333" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M25.999 29.3339H30.0007" stroke="#333333" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M25.999 33.3355H30.0007" stroke="#333333" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M25.999 25.3321H30.0007" stroke="#333333" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M25.999 21.3305H30.0007" stroke="#333333" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M28 37.3373V40.0051" stroke="#333333" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M41.3389 40.005H14.6611" stroke="#333333" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   )
 }
@@ -127,11 +127,11 @@ export function ExternalIcon() {
   return (
     <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0 10.5C0 4.70101 4.70101 0 10.5 0H45.5C51.299 0 56 4.70101 56 10.5V45.5C56 51.299 51.299 56 45.5 56H10.5C4.70101 56 0 51.299 0 45.5V10.5Z" fill="#F1F1F1"/>
-      <path d="M28 16C34.6427 16 40 21.3573 40 28C40 34.6427 34.6427 40 28 40" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M28 40C21.3573 40 16 34.6427 16 28C16 21.3573 21.3573 16 28 16" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"/>
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M25.558 17.4134C21.7046 23.8467 21.7046 32.1547 25.558 38.588C26.686 40.472 29.3166 40.472 30.4446 38.588C34.298 32.1547 34.298 23.8467 30.4446 17.4134C29.3153 15.5294 26.686 15.5294 25.558 17.4134Z" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M17.3467 22.4774C23.8693 24.4921 32.1307 24.4921 38.652 22.4774" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M38.653 33.5227C32.1303 31.5081 23.869 31.5081 17.3477 33.5227" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M28 16C34.6427 16 40 21.3573 40 28C40 34.6427 34.6427 40 28 40" stroke="#333333" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M28 40C21.3573 40 16 34.6427 16 28C16 21.3573 21.3573 16 28 16" stroke="#333333" strokeLinecap="round" strokeLinejoin="round"/>
+      <path fillRule="evenodd" clipRule="evenodd" d="M25.558 17.4134C21.7046 23.8467 21.7046 32.1547 25.558 38.588C26.686 40.472 29.3166 40.472 30.4446 38.588C34.298 32.1547 34.298 23.8467 30.4446 17.4134C29.3153 15.5294 26.686 15.5294 25.558 17.4134Z" stroke="#333333" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M17.3467 22.4774C23.8693 24.4921 32.1307 24.4921 38.652 22.4774" stroke="#333333" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M38.653 33.5227C32.1303 31.5081 23.869 31.5081 17.3477 33.5227" stroke="#333333" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   )
 }
@@ -139,9 +139,9 @@ export function ExternalIcon() {
 export function LightInfo() {
   return (
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M9.99884 6.66671C9.88384 6.66671 9.79051 6.76004 9.79134 6.87504C9.79134 6.99004 9.88468 7.08337 9.99968 7.08337C10.1147 7.08337 10.208 6.99004 10.208 6.87504C10.208 6.76004 10.1147 6.66671 9.99884 6.66671" stroke="#747474" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M10 17.5V17.5C5.8575 17.5 2.5 14.1425 2.5 10V10C2.5 5.8575 5.8575 2.5 10 2.5V2.5C14.1425 2.5 17.5 5.8575 17.5 10V10C17.5 14.1425 14.1425 17.5 10 17.5Z" stroke="#747474" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M9.99967 10V14.1667" stroke="#747474" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M9.99884 6.66671C9.88384 6.66671 9.79051 6.76004 9.79134 6.87504C9.79134 6.99004 9.88468 7.08337 9.99968 7.08337C10.1147 7.08337 10.208 6.99004 10.208 6.87504C10.208 6.76004 10.1147 6.66671 9.99884 6.66671" stroke="#747474" strokeWidth="0.833333" strokeLinecap="round" strokeLinejoin="round"/>
+      <path fillRule="evenodd" clipRule="evenodd" d="M10 17.5V17.5C5.8575 17.5 2.5 14.1425 2.5 10V10C2.5 5.8575 5.8575 2.5 10 2.5V2.5C14.1425 2.5 17.5 5.8575 17.5 10V10C17.5 14.1425 14.1425 17.5 10 17.5Z" stroke="#747474" strokeWidth="0.833333" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M9.99967 10V14.1667" stroke="#747474" strokeWidth="0.833333" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   )
 }
