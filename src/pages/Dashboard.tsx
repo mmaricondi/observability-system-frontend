@@ -38,8 +38,8 @@ function Home() {
         <div className="bg-white shadow-md rounded-md mx-5 flex flex-col">
             <StatusServices />
             <AllServices />
-            <Footer />
         </div>
+        <Footer />
     </div>
     </>
   );

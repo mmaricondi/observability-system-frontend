@@ -37,8 +37,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         return isValidated;
     }
     const signout = async () => {
-        await api.get('/logout')
+        setToken('')
         setUser(null);
+        await api.get('/signin')
     }
 
     const setToken = (access_token: any) => {
