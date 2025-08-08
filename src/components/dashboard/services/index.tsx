@@ -3,7 +3,7 @@ import { InternalIcon, ExternalIcon } from '../../../assets/icons'
 import Services from './services'
 import Top from './top'
 
-function AllServices() {
+function AllServices({data}: {data: any}) {
   const [service, setServices] = useState({internal: {online: 2, offline: 1}, external: {online: 3, offline: 0}})
 
   const { internal, external } = calculateService()

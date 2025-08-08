@@ -1,23 +1,25 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import Alert from "../../../components/page/alert";
-import AlertEnum from "../../../constants/alert/alert.enum";
+import { AlertMessage, AlertType, StatusService } from "../../../constants/alert/alert.enum";
+import { DashboardContext } from '../../../contexts/Dashboard/DashboardContext';
+import type { IAppication } from '../../../interfaces/dashboard/last-app-event.interface';
+
 
 function Services() {
-    const [internalServices, setInternalServices] = useState([] as any);
-    const [externalServices, setExternalServices] = useState([] as any);
+    const [internalServices, setInternalServices] = useState([] as IAppication[]);
+    const [externalServices, setExternalServices] = useState([] as IAppication[]);
+    const dashboardCtxt = useContext(DashboardContext);
+
 
     useEffect(() => {
-        const serverResponse = {
-            internalServices: [{ id: 1, name: "Auth Service", status: "error" }, { id: 2, name: "Payment Service", status: "success" }, { id: 3, name: "User Service", status: "warning" }],
-            externalServices: [{ id: 1, name: "Auth Service", status: "error" }, { id: 2, name: "Payment Service", status: "success" }, { id: 3, name: "User Service", status: "warning" }]
-        }
-        setInternalServices(serverResponse.internalServices)
-        setExternalServices(serverResponse.externalServices)
-    }, [])
+        setInternalServices(dashboardCtxt.appLastEventData?.internal || []);
+        setExternalServices(dashboardCtxt.appLastEventData?.external || []);
+    }, [dashboardCtxt.appLastEventData]);
 
-    function showAlert(services: any[]) {
-        const type = services.some(service => service.status === "error") ? "error" : internalServices.some((service: any) => service.status === "warning") ? "warning" : "success";
-        const message = type === "error" ? AlertEnum.ERROR : type === "warning" ? AlertEnum.WARNING : AlertEnum.SUCCESS;
+    function showAlert(services: IAppication[]) {
+        if (services.length === 0) return null;
+
+        const { message, type } = calculateAlertType(services)
         return (
             <div className="">
                 <Alert 
@@ -28,14 +30,30 @@ function Services() {
         );
     }
 
-    function listServices(services: any[]) {
-        return services.filter(service => service.status === "warning" || service.status === "error").map(service => (
-            <div className='p-5' key={service.id}>
+    function calculateAlertType(services: IAppication[]) {
+        const servicesLength = services.length;
+        let numUpServices = 0;
+        services.forEach(service => {
+            if(service.events.status == "up") numUpServices++;
+        })
+        const percentageUp = (numUpServices / servicesLength) * 100;
+        if(percentageUp == 100) {
+            return { message: AlertMessage.SUCCESS, type: AlertType.SUCCESS };
+        }else if(percentageUp >= 20) {
+            return { message: AlertMessage.WARNING, type: AlertType.WARNING };
+        }else {
+            return { message: AlertMessage.ERROR, type: AlertType.ERROR };
+        }
+    }
+
+    function listServices(services: IAppication[]) {
+        return services.filter(service => service.events.status == StatusService.DOWN).map(service => (
+            <div className='p-5' key={service.events.id}>
                 <div className='font-semibold text-gray-600'>
-                    {service.status === "error" ? <span>Queda total do {service.name}</span> : <span>Queda parcial do {service.name}</span>}
+                    {service.events.status === StatusService.DOWN && <span>Servico {service.name} fora do ar</span>}
                 </div>
                 <div className='text-[13px] text-gray-500'>
-                    Afetando {service.name} • {new Date().toLocaleTimeString()}
+                    Afetando {service.name} • {service.events.description}
                 </div>
             </div>
         ));

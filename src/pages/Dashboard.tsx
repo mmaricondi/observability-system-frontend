@@ -5,30 +5,27 @@ import { Footer } from '../components/page/footer';
 import { TopBar } from '../components/page/topBar';
 import StatusServices from '../components/dashboard/status';
 import AllServices from '../components/dashboard/services';
-import IncidentHistory from '../components/dashboard/incidentHistory';
+import type { ILastAppEvent } from '../interfaces/dashboard/last-app-event.interface';
 
 function Home() {
-  const authCtxt = useContext(AuthContext);
+  const authCtx = useContext(AuthContext);
   const dashboardCtxt = useContext(DashboardContext);
 
-  const [accessToken, setAccessToken] = useState<string | null>(null);
-  const [dashboardData, setDashboardData] = useState<any>(null);
+  const [appLastEventData, setAppLastEventData] = useState<ILastAppEvent>();
+  const [appAvgEventData, setAppAvgEventData] = useState<any>(null);
 
   useEffect(() => {
-    setAccessToken(authCtxt.getToken());
-    if (accessToken) {
+    // const token = authCtx.getToken();
+    // if (token) {
       getDashboardData();
-    }
+    // }
   }, []);
 
   const getDashboardData = async () => {
-    await dashboardCtxt.getDashboardData()
-      .then(data => {
-        setDashboardData(data);
-      })
-      .catch(error => {
-        console.error("Error fetching dashboard data:", error);
-      });
+    await dashboardCtxt.fetchLastAppEventData();
+    // const avgAppEvent = await dashboardCtxt.getAvgAppEventsData();
+    // setAppLastEventData(lastAppEvent);
+    // setAppAvgEventData(avgAppEvent);
   }
 
   return (
@@ -37,7 +34,7 @@ function Home() {
         <TopBar />
         <div className="bg-white shadow-md rounded-md mx-5 flex flex-col">
             <StatusServices />
-            <AllServices />
+            <AllServices data={appAvgEventData} />
         </div>
         <Footer />
     </div>

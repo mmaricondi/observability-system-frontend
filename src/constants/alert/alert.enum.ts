@@ -1,8 +1,19 @@
 
-const AlertType = {
+const AlertMessage = {
     SUCCESS: 'Todos os serviços estão operacionais',
-    WARNING: 'Estamos com instabilidade em alguns serviços',
-    ERROR: 'Alguns serviços estão offline',
+    WARNING: 'Estamos passando por alguns problemas!',
+    ERROR: 'Alguns serviços podem estar fora do ar!'
 } as const;
 
-export default AlertType;
+const AlertType = {
+    SUCCESS: 'up',
+    WARNING: 'unstable',
+    ERROR: 'down',
+} as const;
+
+const StatusService = {
+    UP: 'up',
+    DOWN: 'down'
+} as const;
+
+export { AlertMessage, AlertType, StatusService };
