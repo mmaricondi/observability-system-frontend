@@ -17,8 +17,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
     const validateTokenExp = async () => {
         if(!getToken()) return;
-        const data: any = await validateToken();
-        if(!data) signout();
+        validateToken().then((res) => {
+            console.log("validateTokenExp", res);
+        }).catch(() => {
+            signout();
+        });
     }
 
     const signinMail = async (email: string) => {
@@ -52,11 +55,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     const validateToken = async () => {
         addHeader();
-        await api.get('/auth/validate').then((response) => {
-            return response;
-        }).catch((error) => {
-            return error;
-        });
+        return await api.get('/auth/validate')
     }
 
     return (

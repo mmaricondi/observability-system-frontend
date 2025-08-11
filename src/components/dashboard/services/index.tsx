@@ -5,14 +5,13 @@ import { DashboardContext } from '../../../contexts/Dashboard/DashboardContext';
 import Top from './top'
 
 function AllServices() {
-  const [applicationsAvgEventData, setApplicationsAvgEventData] = useState<any>({ internal: [], external: [] });
+  const [, setApplicationsAvgEventData] = useState<any>({ internal: [], external: [] });
   const [infoAvgEventData, setInfoAvgEventData] = useState<any>({ internal: [], external: [] });
   const dashboardCtxt = useContext(DashboardContext);
   
 
   useEffect(() => {
     if(!dashboardCtxt.appAvgEventData) return;
-    console.log(dashboardCtxt.appAvgEventData);
       setApplicationsAvgEventData(dashboardCtxt.appAvgEventData.applications);
       setInfoAvgEventData(dashboardCtxt.appAvgEventData.infos);
     }, [dashboardCtxt.appAvgEventData]);
