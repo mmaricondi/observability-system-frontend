@@ -5,13 +5,13 @@ export type ILastAppEvent = {
 
 export type IAppication = {
     name: string;
-    updatedAt: Date;
+    updated_at: Date;
     events: IEvent;
 }
 
 type IEvent = {
     id: number;
-    createdAt: Date;
+    created_at: Date;
     description: string;
     status: string;
 }

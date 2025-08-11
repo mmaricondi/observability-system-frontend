@@ -9,7 +9,7 @@ function App() {
       <Routes>
         <Route path="/dashboard" element={<RequireAuth><Dashboard/></RequireAuth>} />
         <Route path="/signin" element={<Login />} />
-        <Route path="*" element={<Navigate to="/dashboard" />} />
+        <Route path="/*" element={<Navigate to="/dashboard" />} />
       </Routes>
     </div>
   )

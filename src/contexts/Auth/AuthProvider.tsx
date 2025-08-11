@@ -7,20 +7,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [user, setUser] = useState<User | null>(null);
     const api = useApi();
 
+
     useEffect(() => {
         validateTokenExp();
     }, [])
 
+    const addHeader = () => {
+        api.setHeader("Authorization", `Bearer ${getToken()}`);
+    }
     const validateTokenExp = async () => {
-        const token = getToken();
-        if (token) {
-            const data = await validateToken(token);
-            if(!data.isValidToken) {
-                setToken("");
-                setUser(null);
-                console.log(data.message);
-            }
-        }
+        if(!getToken()) return;
+        const data: any = await validateToken();
+        if(!data) signout();
     }
 
     const signinMail = async (email: string) => {
@@ -52,8 +50,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         return localStorage.getItem('access_token');
     }
 
-    const validateToken = async (token: string) => {
-        return await api.post('/auth/validate', { token })
+    const validateToken = async () => {
+        addHeader();
+        await api.get('/auth/validate').then((response) => {
+            return response;
+        }).catch((error) => {
+            return error;
+        });
     }
 
     return (

@@ -12,22 +12,22 @@ function Services() {
 
 
     useEffect(() => {
+        if(!dashboardCtxt.appLastEventData) return;
         setInternalServices(dashboardCtxt.appLastEventData?.internal || []);
         setExternalServices(dashboardCtxt.appLastEventData?.external || []);
     }, [dashboardCtxt.appLastEventData]);
 
     function showAlert(services: IAppication[]) {
-        if (services.length === 0) return null;
-
-        const { message, type } = calculateAlertType(services)
-        return (
-            <div className="">
+        const servicesLength = services.length;
+        if(servicesLength) {
+            const { message, type } = calculateAlertType(services);
+            return (
                 <Alert 
                     message={message} 
                     type={type}
                 />
-            </div>
-        );
+            );
+        }else return (  <div>No services to display</div> );
     }
 
     function calculateAlertType(services: IAppication[]) {
@@ -39,7 +39,7 @@ function Services() {
         const percentageUp = (numUpServices / servicesLength) * 100;
         if(percentageUp == 100) {
             return { message: AlertMessage.SUCCESS, type: AlertType.SUCCESS };
-        }else if(percentageUp >= 20) {
+        }else if(percentageUp >= 70) {
             return { message: AlertMessage.WARNING, type: AlertType.WARNING };
         }else {
             return { message: AlertMessage.ERROR, type: AlertType.ERROR };

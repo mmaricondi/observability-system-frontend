@@ -9,7 +9,7 @@ export function TopBar() {
     return (
         <div className='fixed w-full p-5 top-0 left-0 bg-gray-100 flex flex-row justify-between'>
             <div className=''>{<LogoIcon />}</div>
-            <a className='mr-5' href="#" onClick={(e) => {e.preventDefault(); auth.signout();}}>Logout</a>
+            <a className='mr-5' href="#" onClick={(e) => {e.preventDefault(); auth.signout(); window.location.reload();}}>Logout</a>
         </div>
     )
 }

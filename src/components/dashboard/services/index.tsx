@@ -1,29 +1,29 @@
-import { useState } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { InternalIcon, ExternalIcon } from '../../../assets/icons'
 import Services from './services'
+import { DashboardContext } from '../../../contexts/Dashboard/DashboardContext';
 import Top from './top'
 
-function AllServices({data}: {data: any}) {
-  const [service, setServices] = useState({internal: {online: 2, offline: 1}, external: {online: 3, offline: 0}})
+function AllServices() {
+  const [applicationsAvgEventData, setApplicationsAvgEventData] = useState<any>({ internal: [], external: [] });
+  const [infoAvgEventData, setInfoAvgEventData] = useState<any>({ internal: [], external: [] });
+  const dashboardCtxt = useContext(DashboardContext);
+  
 
-  const { internal, external } = calculateService()
+  useEffect(() => {
+    if(!dashboardCtxt.appAvgEventData) return;
+    console.log(dashboardCtxt.appAvgEventData);
+      setApplicationsAvgEventData(dashboardCtxt.appAvgEventData.applications);
+      setInfoAvgEventData(dashboardCtxt.appAvgEventData.infos);
+    }, [dashboardCtxt.appAvgEventData]);
 
   const renderServiceContainer = () => {
     return (
       <div className='mx-5'>
-        <Services icon={<InternalIcon />} title="Serviços Internos" services={{ total: internal.total, percent: internal.percent }}  />
-        <Services icon={<ExternalIcon />} title="Serviços Externos" services={{ total: external.total, percent: external.percent }} />
+        <Services icon={<InternalIcon />} title="Serviços Internos" services={{ total: infoAvgEventData.internal.totalEvents, percent: infoAvgEventData.internal.avgPercent }}  />
+        <Services icon={<ExternalIcon />} title="Serviços Externos" services={{ total: infoAvgEventData.external.totalEvents, percent: infoAvgEventData.external.avgPercent }} />
       </div>
     )
-  }
-
-  function calculateService() {
-    const totalInternal: any = service.internal.online + service.internal.offline
-    const totalExternal: number = service.external.online + service.external.offline
-    const percentInternal: string = ((service.internal.online * 100) / totalInternal).toPrecision(3)
-    const percentExternal: string = ((service.external.online * 100) / totalExternal).toPrecision(3)
-
-    return { internal: { total: totalInternal, percent: percentInternal }, external: { total: totalExternal, percent: percentExternal } }
   }
 
   return (

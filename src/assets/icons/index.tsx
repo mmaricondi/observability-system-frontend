@@ -24,7 +24,7 @@ export function EmailIcon(props: React.SVGProps<SVGSVGElement>) {
 }
 
 
-export function LogoIcon(props: React.SVGProps<SVGSVGElement>) {
+export function LogoIcon() {
   return (
     <svg width="176" height="25" viewBox="0 0 176 25" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M11.3142 21.3347C10.4993 22.1537 10.4993 23.4814 11.3142 24.3004C12.1294 25.1194 13.4509 25.1194 14.266 24.3004C15.081 23.4814 15.081 22.1537 14.266 21.3347L12.7902 19.8518L11.3142 21.3347Z" fill="#3D8F4A"/>
@@ -47,7 +47,7 @@ export function LogoIcon(props: React.SVGProps<SVGSVGElement>) {
 }
 
 
-export function SimbolIcon(props: React.SVGProps<SVGSVGElement>) {
+export function SimbolIcon() {
   return (
     <svg width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M10.4442 19.6953C9.69179 20.4514 9.69179 21.6771 10.4442 22.4331C11.1967 23.1892 12.4166 23.1892 13.1691 22.4331C13.9215 21.6771 13.9215 20.4514 13.1691 19.6953L11.8067 18.3264L10.4442 19.6953Z" fill="#285E31"/>
@@ -57,7 +57,7 @@ export function SimbolIcon(props: React.SVGProps<SVGSVGElement>) {
 }
 
 
-export function UpdateIcon(props: React.SVGProps<SVGSVGElement>) {
+export function UpdateIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M19.332 6.793C17.701 4.5 15.028 3 12 3C7.029 3 3 7.029 3 12C3 12.539 3.056 13.064 3.147 13.576" stroke="#747474" strokeLinecap="round" strokeLinejoin="round"/>
@@ -68,7 +68,7 @@ export function UpdateIcon(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function SuccessIcon(props: React.SVGProps<SVGSVGElement>) {
+export function SuccessIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path fillRule="evenodd" clipRule="evenodd" d="M12 21V21C7.029 21 3 16.971 3 12V12C3 7.029 7.029 3 12 3V3C16.971 3 21 7.029 21 12V12C21 16.971 16.971 21 12 21Z" stroke="#263A2D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -78,7 +78,7 @@ export function SuccessIcon(props: React.SVGProps<SVGSVGElement>) {
 }
 
 
-export function WarningIcon(props: React.SVGProps<SVGSVGElement>) {
+export function WarningIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M12 13.12V9.38" stroke="#542208" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -90,7 +90,7 @@ export function WarningIcon(props: React.SVGProps<SVGSVGElement>) {
 
 
 
-export function ErrorIcon(props: React.SVGProps<SVGSVGElement>) {
+export function ErrorIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path fillRule="evenodd" clipRule="evenodd" d="M12 21V21C7.029 21 3 16.971 3 12V12C3 7.029 7.029 3 12 3V3C16.971 3 21 7.029 21 12V12C21 16.971 16.971 21 12 21Z" stroke="#661313" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>

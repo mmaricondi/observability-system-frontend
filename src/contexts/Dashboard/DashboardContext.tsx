@@ -5,6 +5,7 @@ export type DashboardContextType = {
     fetchLastAppEventData: () => Promise<any>;
     fetchAvgAppEventsData: () => Promise<any>;
     appLastEventData?: ILastAppEvent;
+    appAvgEventData?: any;
 }
 
 export const DashboardContext = createContext<DashboardContextType>(null!);
