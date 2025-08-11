@@ -22,10 +22,13 @@ function Services() {
         if(servicesLength) {
             const { message, type } = calculateAlertType(services);
             return (
-                <Alert 
-                    message={message} 
-                    type={type}
-                />
+                <div>
+                    <Alert
+                        message={message} 
+                        type={type}
+                    />
+                    {type == 'down' && <div className='pt-5 border-b border-gray-200'></div>}
+                </div>
             );
         }else return (  <div>No services to display</div> );
     }
@@ -36,11 +39,8 @@ function Services() {
         services.forEach(service => {
             if(service.events.status == "up") numUpServices++;
         })
-        const percentageUp = (numUpServices / servicesLength) * 100;
-        if(percentageUp == 100) {
+        if(numUpServices == servicesLength) {
             return { message: AlertMessage.SUCCESS, type: AlertType.SUCCESS };
-        }else if(percentageUp >= 70) {
-            return { message: AlertMessage.WARNING, type: AlertType.WARNING };
         }else {
             return { message: AlertMessage.ERROR, type: AlertType.ERROR };
         }
@@ -48,12 +48,12 @@ function Services() {
 
     function listServices(services: IAppication[]) {
         return services.filter(service => service.events.status == StatusService.DOWN).map(service => (
-            <div className='p-5' key={service.events.id}>
+            <div className='p-4' key={service.events.id}>
                 <div className='font-semibold text-gray-600'>
-                    {service.events.status === StatusService.DOWN && <span>Servico {service.name} fora do ar</span>}
+                    {service.events.status === StatusService.DOWN && <span>{service.events.description}</span>}
                 </div>
                 <div className='text-[13px] text-gray-500'>
-                    Afetando {service.name} • {service.events.description}
+                    {service.name} • {new Date(service.events.created_at).toLocaleString()}
                 </div>
             </div>
         ));
@@ -61,23 +61,19 @@ function Services() {
 
     return (
         <>
-        <div>
-            <div className="border border-gray-200 p-5">
+        <div className='mb-10'>
+            <div className="border border-gray-200 rounded-lg p-5">
                 <h1 className='text-[20px] font-semibold text-gray-600 pb-3'>Serviços internos</h1>
                 {showAlert(internalServices)}
-            </div>
-            <div className="border-l border-r border-b border-gray-200 mb-4">
                 {listServices(internalServices)}
             </div>
         </div>
         <div>
 
         </div>
-             <div className="border-l border-r border-t border-gray-200 p-5">
+             <div className="border border-gray-200 rounded-lg p-5">
                 <h1 className='text-[20px] font-semibold text-gray-600 pb-3'>Serviços externos</h1>
                 {showAlert(externalServices)}
-            </div>
-            <div className="border-l border-r border-b border-gray-200 mb-4">
                 {listServices(externalServices)}
             </div>
         </>

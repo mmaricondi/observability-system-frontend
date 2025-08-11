@@ -10,7 +10,7 @@ function Home() {
     <>
     <div className="w-screen h-screen flex justify-bottom pt-20 flex-col bg-gray-100">
         <TopBar />
-        <div className="bg-white shadow-md rounded-md mx-5 flex flex-col">
+        <div className="bg-white shadow-sm  mx-5 flex flex-col">
             <StatusServices />
             <AllServices />
         </div>

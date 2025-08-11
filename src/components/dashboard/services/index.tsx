@@ -5,7 +5,7 @@ import { DashboardContext } from '../../../contexts/Dashboard/DashboardContext';
 import Top from './top'
 
 function AllServices() {
-  const [, setApplicationsAvgEventData] = useState<any>({ internal: [], external: [] });
+  const [applicationAvgEventData, setApplicationsAvgEventData] = useState<any>({ internal: [], external: [] });
   const [infoAvgEventData, setInfoAvgEventData] = useState<any>({ internal: [], external: [] });
   const dashboardCtxt = useContext(DashboardContext);
   
@@ -19,8 +19,8 @@ function AllServices() {
   const renderServiceContainer = () => {
     return (
       <div className='mx-5'>
-        <Services icon={<InternalIcon />} title="Serviços Internos" services={{ total: infoAvgEventData.internal.totalEvents, percent: infoAvgEventData.internal.avgPercent }}  />
-        <Services icon={<ExternalIcon />} title="Serviços Externos" services={{ total: infoAvgEventData.external.totalEvents, percent: infoAvgEventData.external.avgPercent }} />
+        <Services icon={<InternalIcon />} title="Serviços Internos" services={{ total: infoAvgEventData.internal ? infoAvgEventData.internal.totalServices : 0, percent: infoAvgEventData.internal ? infoAvgEventData.internal.avgPercent : "Sem serviços" }} apps={applicationAvgEventData.internal} />
+        <Services icon={<ExternalIcon />} title="Serviços Externos" services={{ total: infoAvgEventData.external ? infoAvgEventData.external.totalServices : 0, percent: infoAvgEventData.external ? infoAvgEventData.external.avgPercent : "Sem serviços" }} apps={applicationAvgEventData.external} />
       </div>
     )
   }

@@ -1,22 +1,17 @@
 import type { ReactNode } from "react"
-import { LightInfo } from "../../../assets/icons"
+import { Apps } from "./apps";
+import { Collapse } from "./collapse";
 
-function Services({ title, icon, services }: { title: string, icon: ReactNode, services: { total: number, percent: string } } ) {
+function Services({ title, icon, services, apps }: { title: string, icon: ReactNode, services: { total: number, percent: string}, apps: any[]} ) {
+    const colorAppPercent = parseFloat(services.percent) > 85 ? "#E6F5E8" : parseFloat(services.percent) > 65 ? "#FBF2CB" : "#FFF0EB";
+
     return (
-        <div className="flex flex-row items-center my-10 border border-gray-200 rounded-[0.6vw] p-5">
-            <div>{icon}</div>
-            <div className="flex flex-col">
-                <div className="flex flex-row items-center">
-                    <div className="flex flex-row text-[24px] mx-3">{title}</div>
-                    <div><LightInfo /></div>
-                </div>
-                <div className="flex flex-row text-[16px]">
-                    <div className="text-[#747474] mx-3">{services.total} services •</div>
-                    <div className="bg-[#E6F5E8] rounded-[2vw] px-2 ml-1 text-[#285E31]">{services.percent}% operacional</div>
-                </div>
-                </div> 
+        <div className="my-10 border border-gray-200 rounded-lg p-2">
+            <Collapse infos={true} color={colorAppPercent} services={services} icon={icon} title={title}>
+                {({ open }) => <Apps open={open} apps={apps} />}
+            </Collapse>
         </div>
-    )
+    );
 }
 
 export default Services

@@ -11,7 +11,7 @@ export type IAppication = {
 
 type IEvent = {
     id: number;
-    created_at: Date;
+    created_at: string;
     description: string;
     status: string;
 }
